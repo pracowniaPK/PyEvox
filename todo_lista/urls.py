@@ -19,6 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^todolist/', include('todos.urls')),
-    url(r'^google/', include('todos.urls')),
+    url(r'^google/', include('google_it.urls')),
     url(r'^admin/', admin.site.urls),
 ]

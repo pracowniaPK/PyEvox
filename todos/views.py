@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import Item
 from django.views.decorators.csrf import csrf_exempt
-from django.views import generic
 from .models import Item
 import json
 import datetime
@@ -11,17 +10,14 @@ import datetime
 @csrf_exempt
 def index(request):
     if request.method == "GET":
-        if request.path_info == "/google/":
-            return redirect("http://google.com/search?q={}".format(request.GET.get('co')))
-        else:
-            item_list = Item.objects.all()
-            done_list = [
-                len(item_list),
-                len([i for i in item_list if i.done == True]),
-                len([i for i in item_list if i.done == False]),
-            ]
-            context = {'item_list': item_list, 'done_list': done_list}
-            return render(request, 'todos/todo_list.html', context)
+        item_list = Item.objects.all()
+        done_list = [
+            len(item_list),
+            len([i for i in item_list if i.done == True]),
+            len([i for i in item_list if i.done == False]),
+        ]
+        context = {'item_list': item_list, 'done_list': done_list}
+        return render(request, 'todos/todo_list.html', context)
     if request.method == "POST":
         json_data = json.loads(request.body)
 
