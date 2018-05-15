@@ -1,7 +1,19 @@
-<pre>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>todo lista</title>
+</head>
+
+<body>
+    <pre style="margin: 3em; font-size: 120%; color: #2a303a">
 To-do list ({{ done_list.0 }} tasks, {{ done_list.1 }} done, {{ done_list.2 }} to do)
 {% if item_list %}{% for item in item_list %}[{% if item.done == True %}X{% else %} {% endif %}] {{ forloop.counter }}. {{item.title}}
 {% endfor %}
-{% else %}0. Do some items
+{% else %}0. Make some items
 {% endif %}
 </pre>
+</body>
+
+</html>

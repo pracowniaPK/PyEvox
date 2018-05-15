@@ -23,6 +23,7 @@ def index(request):
 
         i = Item(title=json_data['title'])
         i.done = json_data['done'] if 'done' in json_data else False
+        i.author_ip = request.META['REMOTE_ADDR']
         i.save()
 
         response_data = {"task_id": i.id}
